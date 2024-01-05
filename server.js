@@ -7,7 +7,7 @@ const fileUpload = require('express-fileupload')
 const cookieParser = require('cookie-parser')
 const path = require('path')
 
-const PORT = process.env.PORT || 5000
+const PORT = 5000
 
 
 const app = express()

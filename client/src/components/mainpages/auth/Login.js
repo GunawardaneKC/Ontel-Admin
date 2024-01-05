@@ -6,6 +6,7 @@ import {BsFillShieldLockFill} from 'react-icons/bs';
 import video from '../../../images/polygon-145031.mp4';
 
 function Login() {
+    // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const [user, setUser] = useState({
         email:'', password: ''
     })

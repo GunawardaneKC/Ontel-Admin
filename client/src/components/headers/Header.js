@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 function Header() {
+    // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
     const [isAdmin] = state.userAPI.isAdmin
@@ -52,6 +53,7 @@ function Header() {
     //         <>
     //             <li><Link to="/history">Your History</Link></li>
     //             <li><Link to="/contactUs">Contact Us</Link></li>
+    //             <li className='logOutRed'><Link to="/" onClick={logoutUser}>Logout</Link></li>
     //         </>
     //     )
     // }
@@ -93,9 +95,9 @@ function Header() {
 
                 {isAdmin && adminRouter()}
 
-                {/* {isUser && UserRouter()} */}
+                {/* {isUser && UserRouter()}
 
-                {/* {
+                {
                     isLogged ? loggedRouter() : ''
                 } */}
 
