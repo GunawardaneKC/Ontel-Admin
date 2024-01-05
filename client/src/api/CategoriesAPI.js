@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 function CategoriesAPI() {
-    // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const [categories, setCategories] = useState([])
     const [callback, setCallback] = useState(false)
 

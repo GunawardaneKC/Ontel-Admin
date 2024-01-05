@@ -9,22 +9,40 @@ export const GlobalState = createContext()
 
 
 export const DataProvider = ({children}) =>{
-    // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const [token, setToken] = useState(false)
 
 
     useEffect(() =>{
         const firstLogin = localStorage.getItem('firstLogin')
         if(firstLogin){
-            const refreshToken = async () =>{
-                const res = await axios.get('/user/refresh_token')
+            // const refreshToken = async () =>{
+            //     const res = await axios.get('/user/refresh_token')
         
-                setToken(res.data.accesstoken)
+            //     setToken(res.data.accesstoken)
     
-                setTimeout(() => {
-                    refreshToken()
-                }, 10 * 60 * 1000)
-            }
+            //     setTimeout(() => {
+            //         refreshToken()
+            //     }, 10 * 60 * 1000)
+            // }
+            const refreshToken = async () => {
+                try {
+                  const res = await axios.get('/user/refresh_token');
+                  setToken(res.data.accesstoken);
+                  setTimeout(() => {
+                    refreshToken();
+                  }, 10 * 60 * 1000);
+                } catch (error) {
+                  console.error('Error refreshing token:', error);
+                  // Log additional details about the error response
+                  if (error.response) {
+                    console.error('Error response data:', error.response.data);
+                    console.error('Error response status:', error.response.status);
+                    console.error('Error response headers:', error.response.headers);
+                  }
+                  // Handle the error appropriately (e.g., redirect to login page)
+                }
+              };
             refreshToken()
         }
     },[])
