@@ -53,6 +53,9 @@ const userCtrl = {
             const accesstoken = createAccessToken({id: user._id})
             const refreshtoken = createRefreshToken({id: user._id})
 
+            console.log('Access Token:', accesstoken);
+            console.log('Refresh Token:', refreshtoken);
+
             res.cookie('refreshtoken', refreshtoken, {
                 httpOnly: true,
                 path: '/user/refresh_token',
@@ -60,6 +63,9 @@ const userCtrl = {
             })
 
             res.json({accesstoken})
+
+            console.log(refreshtoken)
+            console.log(accesstoken)
 
         } catch (err) {
             return res.status(500).json({msg: err.message})
