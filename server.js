@@ -27,22 +27,22 @@ app.use('/api', require('./routes/categoryRouter'))
 app.use('/api', require('./routes/upload'))
 app.use('/api', require('./routes/productRouter'))
 app.use('/api', require('./routes/paymentRouter'))
-const postEmp = require('./routes/emp');
-const postRepair = require('./routes/postRepair');
-const postOrd = require('./routes/paymentRouter');
-const postPro = require('./routes/productRouter');
-const postDelivery = require('./routes/postDelivery');
-const postWarranty = require('./routes/postWarranty');
+// const postEmp = require('./routes/emp');
+// const postRepair = require('./routes/postRepair');
+// const postOrd = require('./routes/paymentRouter');
+// const postPro = require('./routes/productRouter');
+// const postDelivery = require('./routes/postDelivery');
+// const postWarranty = require('./routes/postWarranty');
 
 
 
 //routes middelware
-app.use(postEmp);
-app.use(postRepair);
-app.use(postOrd);
-app.use(postDelivery);
-app.use(postWarranty);
-app.use(postPro);
+// app.use(postEmp);
+// app.use(postRepair);
+// app.use(postOrd);
+// app.use(postDelivery);
+// app.use(postWarranty);
+// app.use(postPro);
 
 // app.get("/",(req,res)=>{
 //     res.send("upload file")
