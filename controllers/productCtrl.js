@@ -96,7 +96,7 @@ const productCtrl = {
                 return res.status(400).json({ msg: "This product already exists." });
     
             const newProduct = new Products({
-                title,
+                title:title.toLowerCase(),
                 price,
                 description,
                 stock,
