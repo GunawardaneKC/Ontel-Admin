@@ -30,7 +30,7 @@ export const DataProvider = ({children}) =>{
                 try {
                   const res = await axios.get('/user/refresh_token',{
                         headers: {
-                          Authorization: `Bearer ${token}`
+                          Authorization: `${token}`
                       }
                     });
                   setToken(res.data.accesstoken);
