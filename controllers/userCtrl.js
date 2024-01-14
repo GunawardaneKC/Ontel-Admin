@@ -56,7 +56,7 @@ const userCtrl = {
             console.log('Access Token:', accesstoken);
             console.log('Refresh Token:', refreshtoken);
 
-            res.cookie('refreshtoken', refreshtoken, {
+            res.send('refreshtoken', refreshtoken, {
                 httpOnly: true,
                 path: '/user/refresh_token',
                 maxAge: 7*1000,
@@ -65,6 +65,7 @@ const userCtrl = {
                 secure: true, // th
                  // 7d
             })
+
 
             res.json({accesstoken})
 

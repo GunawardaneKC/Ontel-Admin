@@ -25,7 +25,7 @@ function Login() {
         try {
             await axios.post('/user/login', {...user})
 
-            localStorage.setItem('firstLogin', true)
+            localStorage.setItem('firstLogin', res.data.accesstoken)
             
             navigate('/products');
         } catch (err) {
