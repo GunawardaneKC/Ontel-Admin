@@ -60,7 +60,7 @@ const userCtrl = {
                 httpOnly: true,
                 path: '/user/refresh_token',
                 maxAge: 7*1000,
-                domain: '127.0.0.1', // 7d
+                 // 7d
             })
 
             res.json({accesstoken})
