@@ -27,7 +27,7 @@ export const DataProvider = ({children}) =>{
             // }
             const refreshToken = async () => {
                 try {
-                  const res = await axios.get('/user/refresh_token',{
+                  const res = await axios.get('https://onetel-admin.onrender.com/user/refresh_token',{
                         headers: {
                           Authorization: `Bearer ${token}`
                       }
