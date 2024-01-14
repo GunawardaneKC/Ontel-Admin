@@ -35,7 +35,6 @@ app.use('/api', require('./routes/paymentRouter'))
 // const postWarranty = require('./routes/postWarranty');
 
 
-
 //routes middelware
 // app.use(postEmp);
 // app.use(postRepair);
@@ -50,7 +49,7 @@ app.use('/api', require('./routes/paymentRouter'))
 
 // Connect to mongodb
 // const DB_URL='mongodb+srv://happyitpvindya:happy123@itp.ftafmbd.mongodb.net/'
-const DB_URL='mongodb+srv://onetel:onetel1234@cluster0.u25dn7z.mongodb.net/'
+const DB_URL = process.env.MONGODB_URL
 mongoose.set('strictQuery', false);
 mongoose.set('strictQuery', true);
 

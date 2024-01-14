@@ -4,9 +4,13 @@ import axios from 'axios';
 import {FaUserShield} from 'react-icons/fa';
 import {BsFillShieldLockFill} from 'react-icons/bs';
 import video from '../../../images/polygon-145031.mp4';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
-    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+
+    // axios.defaults.baseURL = 'http://20.2.85.43:5000';
+    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';  
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         email:'', password: ''
     })
@@ -23,7 +27,7 @@ function Login() {
 
             localStorage.setItem('firstLogin', true)
             
-            window.location.href = "/products";
+            navigate('/products');
         } catch (err) {
             alert(err.response.data.msg)
         }

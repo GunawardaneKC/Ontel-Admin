@@ -9,7 +9,8 @@ export const GlobalState = createContext()
 
 
 export const DataProvider = ({children}) =>{
-    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+    // axios.defaults.baseURL = 'http://20.2.85.43:5000';
+    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';  
     const [token, setToken] = useState(false)
 
 
@@ -27,7 +28,11 @@ export const DataProvider = ({children}) =>{
             // }
             const refreshToken = async () => {
                 try {
-                  const res = await axios.get('/user/refresh_token');
+                  const res = await axios.get('/user/refresh_token',{
+                        headers: {
+                          Authorization: `Bearer ${token}`
+                      }
+                    });
                   setToken(res.data.accesstoken);
                   setTimeout(() => {
                     refreshToken();
