@@ -56,15 +56,17 @@ const userCtrl = {
             console.log('Access Token:', accesstoken);
             console.log('Refresh Token:', refreshtoken);
 
-            res.send('refreshtoken', refreshtoken, {
-                httpOnly: true,
-                path: '/user/refresh_token',
-                maxAge: 7*1000,
-                domain: 'https://onetel-admin.onrender.com',
-                sameSite: 'none', // the cookie will be included in requests to different sites
-                secure: true, // th
-                 // 7d
-            })
+            // res.send('refreshtoken', refreshtoken, {
+            //     httpOnly: true,
+            //     path: '/user/refresh_token',
+            //     maxAge: 7*1000,
+            //     domain: 'https://onetel-admin.onrender.com',
+            //     sameSite: 'none', // the cookie will be included in requests to different sites
+            //     secure: true, // th
+            //      // 7d
+            // })
+
+            res.send(refreshtoken);
 
 
             res.json({accesstoken})
