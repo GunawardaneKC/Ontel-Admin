@@ -17,10 +17,10 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors(
-    {
-        origin: ["http://localhost:3001"],
-        credentials: true
-    }
+    // {
+    //     origin: ["http://localhost:3000"],
+    //     credentials: true
+    // }
 ))
 app.use(fileUpload({
     useTempFiles: true

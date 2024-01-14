@@ -3,7 +3,7 @@ import axios from 'axios'
 
 
 function ProductsAPI() {
-    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';  
+    // axios.defaults.baseURL = 'http://20.2.85.43:5000';  
     const [products, setProducts] = useState([])
     const [callback, setCallback] = useState(false)
     const [category, setCategory] = useState('')

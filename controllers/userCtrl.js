@@ -56,18 +56,11 @@ const userCtrl = {
             console.log('Access Token:', accesstoken);
             console.log('Refresh Token:', refreshtoken);
 
-            // res.send('refreshtoken', refreshtoken, {
-            //     httpOnly: true,
-            //     path: '/user/refresh_token',
-            //     maxAge: 7*1000,
-            //     domain: 'https://onetel-admin.onrender.com',
-            //     sameSite: 'none', // the cookie will be included in requests to different sites
-            //     secure: true, // th
-            //      // 7d
-            // })
-
-            res.send(refreshtoken);
-
+            res.cookie('refreshtoken', refreshtoken, {
+                httpOnly: true,
+                path: '/user/refresh_token',
+                maxAge: 7*24*60*60*1000 // 7d
+            })
 
             res.json({accesstoken})
 
@@ -176,7 +169,7 @@ const createAccessToken = (user) =>{
     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '11m'})
 }
 const createRefreshToken = (user) =>{
-    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '11m'})
+    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
 }
 
 module.exports = userCtrl

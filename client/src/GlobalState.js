@@ -10,7 +10,6 @@ export const GlobalState = createContext()
 
 export const DataProvider = ({children}) =>{
     // axios.defaults.baseURL = 'http://20.2.85.43:5000';
-    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';  
     const [token, setToken] = useState(false)
 
 
@@ -27,26 +26,27 @@ export const DataProvider = ({children}) =>{
             //     }, 10 * 60 * 1000)
             // }
             const refreshToken = async () => {
-              try {
-                console.log('Token:', token);
-                const res = await axios.get('/user/refresh_token', {
-                  headers: {
-                    Authorization: `${token}`
+                try {
+                  const res = await axios.get('/user/refresh_token',{
+                        headers: {
+                          Authorization: `Bearer ${token}`
+                      }
+                    });
+                  setToken(res.data.accesstoken);
+                  setTimeout(() => {
+                    refreshToken();
+                  }, 10 * 60 * 1000);
+                } catch (error) {
+                  console.error('Error refreshing token:', error);
+                  // Log additional details about the error response
+                  if (error.response) {
+                    console.error('Error response data:', error.response.data);
+                    console.error('Error response status:', error.response.status);
+                    console.error('Error response headers:', error.response.headers);
                   }
-                });
-                setToken(res.data.accesstoken);
-                setTimeout(() => {
-                  refreshToken();
-                }, 10 * 60 * 1000);
-              } catch (error) {
-                console.error('Error refreshing token:', error);
-                if (error.response) {
-                  console.error('Error response data:', error.response.data);
-                  console.error('Error response status:', error.response.status);
-                  console.error('Error response headers:', error.response.headers);
+                  // Handle the error appropriately (e.g., redirect to login page)
                 }
-              }
-            };
+              };
             refreshToken()
         }
     },[])

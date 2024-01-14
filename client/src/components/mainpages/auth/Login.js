@@ -9,7 +9,6 @@ import { useNavigate } from 'react-router-dom';
 function Login() {
 
     // axios.defaults.baseURL = 'http://20.2.85.43:5000';
-    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';  
     const navigate = useNavigate();
     const [user, setUser] = useState({
         email:'', password: ''
@@ -23,9 +22,9 @@ function Login() {
     const loginSubmit = async e =>{
         e.preventDefault()
         try {
-         const res =   await axios.post('/user/login', {...user})
+            await axios.post('/user/login', {...user})
 
-            localStorage.setItem('firstLogin', res.data)
+            localStorage.setItem('firstLogin', true)
             
             navigate('/products');
         } catch (err) {
