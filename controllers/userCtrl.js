@@ -60,6 +60,7 @@ const userCtrl = {
                 httpOnly: true,
                 path: '/user/refresh_token',
                 maxAge: 7*1000,
+                domain: 'https://onetel-admin.onrender.com'
                  // 7d
             })
 
