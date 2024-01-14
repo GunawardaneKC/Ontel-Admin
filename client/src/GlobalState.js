@@ -27,27 +27,26 @@ export const DataProvider = ({children}) =>{
             //     }, 10 * 60 * 1000)
             // }
             const refreshToken = async () => {
-                try {
-                  const res = await axios.get('/user/refresh_token',{
-                        headers: {
-                          Authorization: `${token}`
-                      }
-                    });
-                  setToken(res.data.accesstoken);
-                  setTimeout(() => {
-                    refreshToken();
-                  }, 10 * 60 * 1000);
-                } catch (error) {
-                  console.error('Error refreshing token:', error);
-                  // Log additional details about the error response
-                  if (error.response) {
-                    console.error('Error response data:', error.response.data);
-                    console.error('Error response status:', error.response.status);
-                    console.error('Error response headers:', error.response.headers);
+              try {
+                console.log('Token:', token);
+                const res = await axios.get('/user/refresh_token', {
+                  headers: {
+                    Authorization: `${token}`
                   }
-                  // Handle the error appropriately (e.g., redirect to login page)
+                });
+                setToken(res.data.accesstoken);
+                setTimeout(() => {
+                  refreshToken();
+                }, 10 * 60 * 1000);
+              } catch (error) {
+                console.error('Error refreshing token:', error);
+                if (error.response) {
+                  console.error('Error response data:', error.response.data);
+                  console.error('Error response status:', error.response.status);
+                  console.error('Error response headers:', error.response.headers);
                 }
-              };
+              }
+            };
             refreshToken()
         }
     },[])

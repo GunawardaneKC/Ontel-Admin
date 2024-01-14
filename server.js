@@ -16,7 +16,12 @@ app.use(bodyParser.urlencoded({extended:false}));
 // app.use(express.static('upload'));
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors(
+    {
+        origin: ["http://localhost:3001"],
+        credentials: true
+    }
+))
 app.use(fileUpload({
     useTempFiles: true
 }))
