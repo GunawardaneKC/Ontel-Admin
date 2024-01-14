@@ -57,8 +57,7 @@ const userCtrl = {
             console.log('Refresh Token:', refreshtoken);
 
             res.cookie('refreshtoken', refreshtoken, {
-                domain: 'https://onetel-admin.onrender.com',
-                httpOnly: true,
+                domain: '.onetel-admin.onrender.com',
                 path: '/user/refresh_token',
                 maxAge: 7*24*60*60*1000 // 7d
             })

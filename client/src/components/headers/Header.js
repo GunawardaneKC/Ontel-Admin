@@ -6,7 +6,7 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 
 function Header() {
-    // axios.defaults.baseURL = 'http://20.2.85.43:5000';
+    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const state = useContext(GlobalState)
     const [isLogged] = state.userAPI.isLogged
     const [isAdmin] = state.userAPI.isAdmin
