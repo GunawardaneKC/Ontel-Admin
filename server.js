@@ -12,8 +12,8 @@ const DB_URL = process.env.MONGODB_URL;
 const app = express();
 
 app.use(cors({
-    origin: 'https://soft-chebakia-0c1d7a.netlify.app',
-    credentials: true,
+    origin: '*',
+    credentials: false,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
