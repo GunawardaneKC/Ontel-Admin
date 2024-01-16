@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
-    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+     
     const navigate = useNavigate();
     const [user, setUser] = useState({
         email:'', password: ''
@@ -22,7 +22,7 @@ function Login() {
     const loginSubmit = async e => {
         e.preventDefault();
         try {
-            const res = await axios.post('/user/login', {...user});
+            const res = await axios.post('https://onetel-admin.onrender.com/user/login', {...user});
             if (res.data && res.data.refreshtoken) {
                 localStorage.setItem('firstLogin', true);
                 localStorage.setItem('refreshtoken', res.data.refreshtoken);
