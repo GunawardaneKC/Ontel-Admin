@@ -21,6 +21,7 @@ app.use(fileUpload({
     useTempFiles: true
 }));
 
+
 app.use('/user', require('./routes/userRouter'));
 app.use('/api', require('./routes/categoryRouter'));
 app.use('/api', require('./routes/upload'));
