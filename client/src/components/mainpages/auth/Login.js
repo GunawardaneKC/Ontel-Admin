@@ -19,18 +19,25 @@ function Login() {
         setUser({...user, [name]:value})
     }
 
-    const loginSubmit = async e =>{
-        e.preventDefault()
+    const loginSubmit = async e => {
+        e.preventDefault();
         try {
-            await axios.post('/user/login', {...user})
-
-            localStorage.setItem('firstLogin', true)
-            
-            navigate('/products');
+            const res = await axios.post('/user/login', {...user});
+            if (res.data && res.data.refreshtoken) {
+                localStorage.setItem('firstLogin', true);
+                localStorage.setItem('refreshtoken', res.data.refreshtoken);
+                navigate('/products');
+            } else {
+                alert('No refresh token received');
+            }
         } catch (err) {
-            alert(err.response.data.msg)
+            if (err.response && err.response.data && err.response.data.msg) {
+                alert(err.response.data.msg);
+            } else {
+                alert('An error occurred while logging in');
+            }
         }
-    }
+    };
 
     return (
         <div className='loginPageLR flexLR'>

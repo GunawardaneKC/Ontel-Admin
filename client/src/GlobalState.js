@@ -15,6 +15,8 @@ export const DataProvider = ({children}) =>{
 
     useEffect(() =>{
         const firstLogin = localStorage.getItem('firstLogin')
+        const refreshtoken = localStorage.getItem('refreshtoken');
+        console.log(refreshtoken)
         if(firstLogin){
             // const refreshToken = async () =>{
             //     const res = await axios.get('/user/refresh_token')
@@ -26,12 +28,16 @@ export const DataProvider = ({children}) =>{
             //     }, 10 * 60 * 1000)
             // }
             const refreshToken = async () => {
-                try {
-                  const res = await axios.get('https://onetel-admin.onrender.com/user/refresh_token',{
-                        headers: {
-                          Authorization: `Bearer ${token}`
-                      }
-                    });
+              try {
+                const res = await axios.post(
+                  '/user/refresh_token',
+                  {},
+                  {
+                    headers: {
+                      Authorization: `${refreshtoken}`
+                    }
+                  }
+                );
                   setToken(res.data.accesstoken);
                   setTimeout(() => {
                     refreshToken();
