@@ -32,7 +32,6 @@ export const DataProvider = ({children}) =>{
               try {
                 const res = await axios.post(
                   '/user/refresh_token',
-                  {  withCredentials: true },
                   {
                     headers: {
                       Authorization: `${refreshtoken}`
