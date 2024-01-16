@@ -60,7 +60,7 @@ const userCtrl = {
             
             
 
-            res.json({accesstoken})
+            res.send({accesstoken})
 
             console.log(refreshtoken)
             console.log(accesstoken)
