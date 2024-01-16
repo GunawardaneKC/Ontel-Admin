@@ -2,7 +2,7 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 function UserAPI(token) {
-    // axios.defaults.baseURL = 'http://20.2.85.43:5000';
+    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isUser, setIsUser] = useState(false)
