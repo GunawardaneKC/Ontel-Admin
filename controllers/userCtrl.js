@@ -87,7 +87,7 @@ const userCtrl = {
 
                 const accesstoken = createAccessToken({id: user.id})
 
-                res.json({accesstoken})
+                res.send({accesstoken})
             })
 
         } catch (err) {
