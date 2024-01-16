@@ -27,16 +27,15 @@ app.use(fileUpload({
 }));
 
 // Connect to MongoDB with additional options
-mongoose.connect(DB_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false
-})
-.then(() => {
+ 
+mongoose.set('strictQuery', false);
+mongoose.set('strictQuery', true);
+
+mongoose.connect(DB_URL)
+.then(()=>{
     console.log('DB Connected');
 })
-.catch((err) => console.log('DB connection error', err));
+.catch((err)=> console.log('DB connection error',err));
 
 app.listen(PORT, () => {
     console.log('Server is running on port', PORT);
