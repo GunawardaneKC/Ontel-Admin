@@ -22,7 +22,7 @@ function Login() {
     const loginSubmit = async e => {
         e.preventDefault();
         try {
-            const res = await axios.post('https://onetel-admin.onrender.com/user/login', {...user}, { withCredentials: true });
+            const res = await axios.post('https://onetel-admin.onrender.com/user/login', {...user});
             if (res.data && res.data.refreshtoken) {
                 localStorage.setItem('firstLogin', true);
                 localStorage.setItem('refreshtoken', res.data.refreshtoken);
