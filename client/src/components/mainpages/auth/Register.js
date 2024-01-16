@@ -8,7 +8,7 @@ import video from '../../../images/polygon-145031.mp4';
 import {MdMarkEmailRead} from 'react-icons/md';
 
 function Register() {
-    // axios.defaults.baseURL = 'http://20.2.85.43:5000';
+    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const [user, setUser] = useState({
         name:'', email:'', password: ''
     })
