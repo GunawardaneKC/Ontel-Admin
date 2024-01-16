@@ -13,10 +13,12 @@ const app = express();
 
 app.use(cors({
     origin: function (origin, callback) {
-        // Allow requests with no origin 
-        // (like mobile apps or curl requests)
+        const allowedOrigins = [
+            'https://soft-chebakia-0c1d7a.netlify.app',
+            'https://soft-chebakia-0c1d7a.netlify.app/product'
+        ];
         if (!origin) return callback(null, true);
-        if (origin !== 'https://soft-chebakia-0c1d7a.netlify.app') {
+        if (allowedOrigins.indexOf(origin) === -1) {
             return callback(new Error('Not allowed by CORS'), false);
         }
         return callback(null, true);
