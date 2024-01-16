@@ -15,8 +15,8 @@ app.use(cors({
     origin: function (origin, callback) {
         const allowedOrigins = [
             'https://soft-chebakia-0c1d7a.netlify.app',
-            'https://soft-chebakia-0c1d7a.netlify.app/product',
-            'https://soft-chebakia-0c1d7a.netlify.app/user/refresh_token'
+            'https://soft-chebakia-0c1d7a.netlify.app/product'
+            
         ];
         if (!origin) return callback(null, true);
         if (allowedOrigins.indexOf(origin) === -1) {
