@@ -56,11 +56,9 @@ const userCtrl = {
             console.log('Access Token:', accesstoken);
             console.log('Refresh Token:', refreshtoken);
 
-            res.cookie('refreshtoken', refreshtoken, {
-                // domain: '.onetel-admin.onrender.com',
-                path: '/user/refresh_token',
-                maxAge: 7*24*60*60*1000 // 7d
-            })
+            res.json({refreshtoken});
+            
+            
 
             res.json({accesstoken})
 
@@ -81,7 +79,7 @@ const userCtrl = {
     },
     refreshToken: (req, res) =>{
         try {
-            const rf_token = req.cookies.refreshtoken;
+            const rf_token = req.header('Authorization');
             if(!rf_token) return res.status(400).json({msg: "Please Login or Register"})
 
             jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
