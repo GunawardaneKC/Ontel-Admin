@@ -16,7 +16,12 @@ app.use(bodyParser.urlencoded({extended:false}));
 // app.use(express.static('upload'));
 app.use(express.json())
 app.use(cookieParser())
-app.use(cors())
+app.use(cors({
+    origin: 'https://soft-chebakia-0c1d7a.netlify.app', // or your specific origin
+    credentials: true, // this allows session cookies to be sent with the request
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // these are the methods that are allowed
+    allowedHeaders: ['Content-Type', 'Authorization'] // these are the headers that are allowed
+}));
 app.use(fileUpload({
     useTempFiles: true
 }))
