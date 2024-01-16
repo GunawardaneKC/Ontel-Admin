@@ -56,7 +56,7 @@ const userCtrl = {
             console.log('Access Token:', accesstoken);
             console.log('Refresh Token:', refreshtoken);
 
-            res.json({refreshtoken});
+            res.send({refreshtoken});
             
             
 
