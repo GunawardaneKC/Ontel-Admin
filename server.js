@@ -15,7 +15,7 @@ app.use(cors({
     origin: function (origin, callback) {
         const allowedOrigins = [
             'https://soft-chebakia-0c1d7a.netlify.app',
-            'https://soft-chebakia-0c1d7a.netlify.app/product'
+            'https://dainty-squirrel-14a6f5.netlify.app'
             
         ];
         if (!origin) return callback(null, true);
