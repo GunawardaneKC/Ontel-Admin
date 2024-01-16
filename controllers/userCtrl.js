@@ -56,6 +56,10 @@ const userCtrl = {
             console.log('Access Token:', accesstoken);
             console.log('Refresh Token:', refreshtoken);
 
+            res.setHeader('Access-Control-Allow-Origin', 'https://soft-chebakia-0c1d7a.netlify.app');
+            res.setHeader('Access-Control-Allow-Credentials', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+            res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
             res.send({refreshtoken});
             
             
@@ -86,6 +90,10 @@ const userCtrl = {
                 if(err) return res.status(400).json({msg: "Please Login or Register"})
 
                 const accesstoken = createAccessToken({id: user.id})
+
+                res.setHeader('Access-Control-Allow-Origin', 'https://soft-chebakia-0c1d7a.netlify.app');
+                res.setHeader('Access-Control-Allow-Credentials', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+                res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
                 res.send({accesstoken})
             })
