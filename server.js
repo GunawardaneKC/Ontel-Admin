@@ -11,23 +11,7 @@ const DB_URL = process.env.MONGODB_URL;
 
 const app = express();
 
-app.use(cors({
-    origin: function (origin, callback) {
-        const allowedOrigins = [
-            'https://soft-chebakia-0c1d7a.netlify.app',
-            'https://dainty-squirrel-14a6f5.netlify.app'
-            
-        ];
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.indexOf(origin) === -1) {
-            return callback(new Error('Not allowed by CORS'), false);
-        }
-        return callback(null, true);
-    },
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-}));
+app.use(cors());
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
