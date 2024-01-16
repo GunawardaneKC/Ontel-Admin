@@ -33,7 +33,7 @@ const userCtrl = {
                 maxAge: 7*24*60*60*1000 // 7d
             })
 
-            res.json({accesstoken})
+            res.send({accesstoken})
 
         } catch (err) {
             return res.status(500).json({msg: err.message})
@@ -72,7 +72,7 @@ const userCtrl = {
     logout: async (req, res) =>{
         try {
             res.clearCookie('refreshtoken', {path: '/user/refresh_token'})
-            return res.json({msg: "Logged out"})
+            return res.send({msg: "Logged out"})
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
@@ -122,7 +122,7 @@ const userCtrl = {
             const user = await Users.findById(req.user.id).select('-password')
             if(!user) return res.status(400).json({msg: "User does not exist."})
 
-            res.json(user)
+            res.send(user)
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
@@ -131,7 +131,7 @@ const userCtrl = {
         try {
             const users = await Users.find()
 
-            res.json(users)
+            res.send(users)
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
@@ -155,7 +155,7 @@ const userCtrl = {
         try {
             const history = await Payments.find({user_id: req.user.id})
 
-            res.json(history)
+            res.send(history)
         } catch (err) {
             return res.status(500).json({msg: err.message})
         }
