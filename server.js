@@ -17,11 +17,12 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.json())
 app.use(cookieParser())
 app.use(cors({
-    origin: 'https://soft-chebakia-0c1d7a.netlify.app',
+    origin: '*',
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization']
-}));
+  }));
+  
 app.use(fileUpload({
     useTempFiles: true
 }))
