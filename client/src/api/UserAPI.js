@@ -13,7 +13,7 @@ function UserAPI(token) {
         if(token){
             const getUser = async () =>{
                 try {
-                    const res = await axios.get('/user/infor', { withCredentials: true }, {
+                    const res = await axios.get('/user/infor', {
                         headers: {Authorization: token}
                     })
 
