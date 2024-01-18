@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../../../variants';
 
 function Categories() {
-  // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+  axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
   const state = useContext(GlobalState);
   const [categories, setCategories] = state.categoriesAPI.categories;
   const [createCategory, setCreateCategory] = useState(''); // Separate state for Create Main Category form

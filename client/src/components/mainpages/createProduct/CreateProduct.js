@@ -20,7 +20,7 @@ const initialState = {
 }
 
 function CreateProduct() {
-    // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const state = useContext(GlobalState);
     const [product, setProduct] = useState(initialState);
     const [categories] = state.categoriesAPI.categories;

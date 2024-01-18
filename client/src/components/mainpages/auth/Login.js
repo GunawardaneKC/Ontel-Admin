@@ -7,8 +7,8 @@ import video from '../../../images/polygon-145031.mp4';
 import { useNavigate } from 'react-router-dom';
 
 function Login() {
-
-     
+  
+    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const navigate = useNavigate();
     const [user, setUser] = useState({
         email:'', password: ''
