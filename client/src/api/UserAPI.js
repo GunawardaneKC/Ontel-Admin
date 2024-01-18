@@ -2,36 +2,40 @@ import {useState, useEffect} from 'react'
 import axios from 'axios'
 
 function UserAPI(token) {
-    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+    // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const [isLogged, setIsLogged] = useState(false)
     const [isAdmin, setIsAdmin] = useState(false)
     const [isUser, setIsUser] = useState(false)
     const [cart, setCart] = useState([])
     const [history, setHistory] = useState([])
 
-    useEffect(() =>{
-        if(token){
-            const getUser = async () =>{
-                try {
+    useEffect(() => {
+        const getUser = async () => {
+            try {
+                if (token) {
                     const res = await axios.get('/user/infor', {
-                        headers: {Authorization: token}
-                    })
-
-                    setIsLogged(true)
-                    res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false)
-                    res.data.role === 0 ? setIsUser(true) : setIsUser(false)
-
-                    setCart(res.data.cart)
-
-                } catch (err) {
-                    alert(err.response.data.msg)
+                        // headers: { Authorization: token },
+                    });
+    
+                    setIsLogged(true);
+                    res.data.role === 1 ? setIsAdmin(true) : setIsAdmin(false);
+                    res.data.role === 0 ? setIsUser(true) : setIsUser(false);
+    
+                    setCart(res.data.cart);
+                } else {
+                    // Handle the case when there's no token
+                    setIsLogged(true);
+                    setIsAdmin(true);
+                    setIsUser(false);
+                    setCart([]);
                 }
+            } catch (err) {
+                alert(err.response.data.msg);
             }
-
-            getUser()
-            
-        }
-    },[token])
+        };
+    
+        getUser();
+    }, [token]);
 
     
 

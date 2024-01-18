@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const userCtrl = require('../controllers/userCtrl')
-const auth = require('../middleware/auth')
+// const auth = require('../middleware/auth')
 
 router.post('/register', userCtrl.register)
 
@@ -8,15 +8,15 @@ router.post('/login', userCtrl.login)
 
 // router.get('/logout', userCtrl.logout)
 
-router.post('/refresh_token', userCtrl.refreshToken)
+// router.post('/refresh_token', userCtrl.refreshToken)
 
-router.get('/infor', auth,  userCtrl.getUser)
+router.get('/infor',  userCtrl.getUser)
 
-router.get('/users', auth,  userCtrl.getAllUsers)
+router.get('/users',  userCtrl.getAllUsers)
 
-router.patch('/addcart', auth, userCtrl.addCart)
+router.patch('/addcart', userCtrl.addCart)
 
-router.get('/history', auth, userCtrl.history)
+router.get('/history', userCtrl.history)
 
 router.get('/Allusers', (req, res) => {
     postEmp.find().exec((err, postEmp) => {

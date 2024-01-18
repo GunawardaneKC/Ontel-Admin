@@ -22,10 +22,10 @@ function Login() {
     const loginSubmit = async e => {
         e.preventDefault();
         try {
-            const res = await axios.post('https://onetel-admin.onrender.com/user/login', {...user}, { withCredentials: true });
-            if (res.data && res.data.refreshtoken) {
+            const res = await axios.post('/user/login', {...user});
+            if (res.data) {
                 localStorage.setItem('firstLogin', true);
-                localStorage.setItem('refreshtoken', res.data.refreshtoken);
+                // localStorage.setItem('refreshtoken', res.data.refreshtoken);
                 navigate('/products');
             } else {
                 alert('No refresh token received');

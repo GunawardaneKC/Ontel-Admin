@@ -1,18 +1,18 @@
 const router = require('express').Router()
 const { connect } = require('mongoose')
 const productCtrl = require('../controllers/productCtrl')
-const auth = require('../middleware/auth')
-const authAdmin = require('../middleware/authAdmin')
+// const auth = require('../middleware/auth')
+// const authAdmin = require('../middleware/authAdmin')
 const postPay = require('../models/productModel')
 
 router.route('/products')
     .get(productCtrl.getProducts)
-    .post(auth, authAdmin, productCtrl.createProduct)
+    .post(productCtrl.createProduct)
 
 
 router.route('/products/:id')
-    .delete(auth, authAdmin, productCtrl.deleteProduct)
-    .put(auth, authAdmin, productCtrl.updateProduct)
+    .delete(productCtrl.deleteProduct)
+    .put(productCtrl.updateProduct)
 
     router.get('/product', (req, res) => {
         postPay.find().exec((err, postPay) => {

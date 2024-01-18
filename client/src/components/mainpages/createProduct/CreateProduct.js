@@ -20,7 +20,7 @@ const initialState = {
 }
 
 function CreateProduct() {
-    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+    // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const state = useContext(GlobalState);
     const [product, setProduct] = useState(initialState);
     const [categories] = state.categoriesAPI.categories;
@@ -32,7 +32,7 @@ function CreateProduct() {
 
 
     const [isAdmin] = state.userAPI.isAdmin
-    const [token] = state.token
+    // const [token] = state.token
 
     const navigate = useNavigate();
     const param = useParams()
@@ -154,7 +154,7 @@ function CreateProduct() {
   
             setLoading(true);
             const res = await axios.post('/api/upload', formData, {
-              headers: { 'content-type': 'multipart/form-data', Authorization: token },
+              // headers: { 'content-type': 'multipart/form-data', Authorization: token },
             });
             setLoading(false);
             setImages(res.data);
@@ -174,7 +174,7 @@ function CreateProduct() {
             if(!isAdmin) return alert("You're not an admin")
             setLoading(true)
             await axios.post('/api/destroy', {public_id: images.public_id}, {
-                headers: {Authorization: token}
+                // headers: {Authorization: token}
             })
             setLoading(false)
             setImages(false)
@@ -236,11 +236,11 @@ function CreateProduct() {
   
           if (onEdit) {
               await axios.put(`/api/products/${product._id}`, { ...product, images, subcategory: selectedSubcategory }, {
-                  headers: { Authorization: token }
+                  // headers: { Authorization: token }
               });
           } else {
               await axios.post('/api/products', { ...product, images, subcategory: selectedSubcategory }, {
-                  headers: { Authorization: token }
+                  // headers: { Authorization: token }
               });
           }
           setCallback(!callback);

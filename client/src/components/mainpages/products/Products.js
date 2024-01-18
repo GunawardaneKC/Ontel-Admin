@@ -11,11 +11,11 @@ import {fadeIn} from '../../../variants';
 
 function Products() {
     // axios.defaults.baseURL = 'http://20.2.85.43:5000';
-    axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+    // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
     const state = useContext(GlobalState)
     const [products, setProducts] = state.productsAPI.products
     const [isAdmin] = state.userAPI.isAdmin
-    const [token] = state.token
+    // const [token] = state.token
     const [callback, setCallback] = state.productsAPI.callback
     const [loading, setLoading] = useState(false)
     const [isCheck, setIsCheck] = useState(false)
@@ -31,10 +31,10 @@ function Products() {
         try {
             setLoading(true)
             const destroyImg = axios.post('/api/destroy', {public_id},{
-                headers: {Authorization: token}
+                // headers: {Authorization: token}
             })
             const deleteProduct = axios.delete(`/api/products/${id}`, {
-                headers: {Authorization: token}
+                // headers: {Authorization: token}
             })
 
             await destroyImg

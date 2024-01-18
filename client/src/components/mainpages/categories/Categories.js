@@ -5,14 +5,14 @@ import { motion } from 'framer-motion';
 import { fadeIn } from '../../../variants';
 
 function Categories() {
-  axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
+  // axios.defaults.baseURL = 'https://onetel-admin.onrender.com';
   const state = useContext(GlobalState);
   const [categories, setCategories] = state.categoriesAPI.categories;
   const [createCategory, setCreateCategory] = useState(''); // Separate state for Create Main Category form
   const [updateCategory, setUpdateCategory] = useState(''); // Separate state for Update Main Category form
   const [subCategory, setSubCategory] = useState('');
   const [selectedMainCategory, setSelectedMainCategory] = useState('');
-  const [token] = state.token;
+  // const [token] = state.token;
   const [callback, setCallback] = state.categoriesAPI.callback;
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function Categories() {
   const createMainCategory = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('/api/category', { name: createCategory }, { headers: { Authorization: token } });
+      const res = await axios.post('/api/category', { name: createCategory }, );
       alert(res.data.msg);
       setCreateCategory('');
       setCallback(!callback);
@@ -42,7 +42,7 @@ function Categories() {
       const mainCategory = categories.find((cat) => cat._id === selectedMainCategory);
       const updatedSubcategories = [...mainCategory.subcategory, subCategory];
   
-      const res = await axios.put(`/api/category/${selectedMainCategory}`, { subcategory: updatedSubcategories }, { headers: { Authorization: token } });
+      const res = await axios.put(`/api/category/${selectedMainCategory}`, { subcategory: updatedSubcategories }, );
       alert(res.data.msg);
       setSubCategory('');
       setCallback(!callback);
@@ -58,7 +58,7 @@ function Categories() {
 
   const updateMainCategory = async () => {
     try {
-      const res = await axios.put(`/api/category/${selectedMainCategory}`, { name: updateCategory }, { headers: { Authorization: token } });
+      const res = await axios.put(`/api/category/${selectedMainCategory}`, { name: updateCategory }, );
       alert(res.data.msg);
       setUpdateCategory('');
       setSelectedMainCategory('');
@@ -70,7 +70,7 @@ function Categories() {
 
   const deleteMainCategory = async (id) => {
     try {
-      const res = await axios.delete(`/api/category/${id}`, { headers: { Authorization: token } });
+      const res = await axios.delete(`/api/category/${id}`, );
       alert(res.data.msg);
       setCallback(!callback);
     } catch (err) {
@@ -83,7 +83,7 @@ function Categories() {
       const res = await axios.put(
         `/api/category/${mainCategoryId}`,
         { subcategory: categories.find(cat => cat._id === mainCategoryId)?.subcategory.filter(subCat => subCat !== subCategoryName) },
-        { headers: { Authorization: token } }
+        
       );
   
       alert(res.data.msg);
@@ -101,7 +101,7 @@ function Categories() {
       const res = await axios.put(
         `/api/category/${mainCategoryId}`,
         { subcategory: updatedSubcategories },
-        { headers: { Authorization: token } }
+        
       );
   
       alert(res.data.msg);

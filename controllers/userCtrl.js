@@ -24,16 +24,16 @@ const userCtrl = {
             await newUser.save()
 
             // Then create jsonwebtoken to authentication
-            const accesstoken = createAccessToken({id: newUser._id})
-            const refreshtoken = createRefreshToken({id: newUser._id})
+            // const accesstoken = createAccessToken({id: newUser._id})
+            // const refreshtoken = createRefreshToken({id: newUser._id})
 
-            res.cookie('refreshtoken', refreshtoken, {
-                httpOnly: true,
-                path: '/user/refresh_token',
-                maxAge: 7*24*60*60*1000 // 7d
-            })
+            // res.cookie('refreshtoken', refreshtoken, {
+            //     httpOnly: true,
+            //     path: '/user/refresh_token',
+            //     maxAge: 7*24*60*60*1000 // 7d
+            // })
 
-            res.send({accesstoken})
+            // res.send({accesstoken})
 
         } catch (err) {
             return res.status(500).json({msg: err.message})
@@ -49,25 +49,27 @@ const userCtrl = {
             const isMatch = await bcrypt.compare(password, user.password)
             if(!isMatch) return res.status(400).json({msg: "Incorrect password."})
 
+            res.send({msg: "Login Success!"})
+
             // If login success , create access token and refresh token
-            const accesstoken = createAccessToken({id: user._id})
-            const refreshtoken = createRefreshToken({id: user._id})
+            // const accesstoken = createAccessToken({id: user._id})
+            // const refreshtoken = createRefreshToken({id: user._id})
 
-            console.log('Access Token:', accesstoken);
-            console.log('Refresh Token:', refreshtoken);
+            // console.log('Access Token:', accesstoken);
+            // console.log('Refresh Token:', refreshtoken);
 
-            res.setHeader('Access-Control-Allow-Origin', 'https://soft-chebakia-0c1d7a.netlify.app');
-            res.setHeader('Access-Control-Allow-Credentials', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-            res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            // res.setHeader('Access-Control-Allow-Origin', 'https://soft-chebakia-0c1d7a.netlify.app');
+            // res.setHeader('Access-Control-Allow-Credentials', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+            // res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-            res.send({refreshtoken});
+            // res.send({refreshtoken});
             
             
 
-            res.json({accesstoken})
+            // res.json({accesstoken})
 
-            console.log(refreshtoken)
-            console.log(accesstoken)
+            // console.log(refreshtoken)
+            // console.log(accesstoken)
 
         } catch (err) {
             return res.status(500).json({msg: err.message})
@@ -81,28 +83,28 @@ const userCtrl = {
     //         return res.status(500).json({msg: err.message})
     //     }
     // },
-    refreshToken: (req, res) =>{
-        try {
-            const rf_token = req.header('Authorization');
-            if(!rf_token) return res.status(400).json({msg: "Please Login or Register"})
+    // refreshToken: (req, res) =>{
+    //     try {
+    //         const rf_token = req.header('Authorization');
+    //         if(!rf_token) return res.status(400).json({msg: "Please Login or Register"})
 
-            jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
-                if(err) return res.status(400).json({msg: "Please Login or Register"})
+    //         jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, user) =>{
+    //             if(err) return res.status(400).json({msg: "Please Login or Register"})
 
-                const accesstoken = createAccessToken({id: user.id})
+    //             const accesstoken = createAccessToken({id: user.id})
 
-                res.setHeader('Access-Control-Allow-Origin', 'https://soft-chebakia-0c1d7a.netlify.app');
-                res.setHeader('Access-Control-Allow-Credentials', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-                res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    //             res.setHeader('Access-Control-Allow-Origin', 'https://soft-chebakia-0c1d7a.netlify.app');
+    //             res.setHeader('Access-Control-Allow-Credentials', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    //             res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
 
-                res.send({accesstoken})
-            })
+    //             res.send({accesstoken})
+    //         })
 
-        } catch (err) {
-            return res.status(500).json({msg: err.message})
-        }
+    //     } catch (err) {
+    //         return res.status(500).json({msg: err.message})
+    //     }
         
-    },
+    // },
 
     // refreshToken: (req, res) => {
     //     try {
@@ -171,11 +173,11 @@ const userCtrl = {
  }
 
 
-const createAccessToken = (user) =>{
-    return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '11m'})
-}
-const createRefreshToken = (user) =>{
-    return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
-}
+// const createAccessToken = (user) =>{
+//     return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {expiresIn: '11m'})
+// }
+// const createRefreshToken = (user) =>{
+//     return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: '7d'})
+// }
 
 module.exports = userCtrl
