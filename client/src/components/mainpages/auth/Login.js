@@ -22,8 +22,10 @@ function Login() {
     const loginSubmit = async e => {
         e.preventDefault();
         try {
+
             const res = await axios.post('/user/login', {...user});
             if (res.data) {
+
                 localStorage.setItem('firstLogin', true);
                 // localStorage.setItem('refreshtoken', res.data.refreshtoken);
                 navigate('/products');
