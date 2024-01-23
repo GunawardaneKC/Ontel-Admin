@@ -10,6 +10,8 @@ function Filters() {
   const [subcategory, setSubcategory] = state.productsAPI.subcategory;
   const [sort, setSort] = state.productsAPI.sort
 
+  const [condition, setCondition] = state.productsAPI.condition;
+
   const handleCategory = (e) => {
     const selectedCategory = e.target.value;
     setCategory(selectedCategory);
@@ -34,7 +36,7 @@ function Filters() {
       >
         <option value="">All Products</option>
         {categories.map((category) => (
-          <option value={category._id} key={category._id}>
+          <option value={category._id} key={category._id} selected={category.name === 'Mobile Phones'}>
             {category.name}
           </option>
         ))}
@@ -67,15 +69,40 @@ function Filters() {
           className="border rounded-md px-2 py-1"
         />
       </div>
-              <div className="row sort">
-                 <span className="font-medium">Sort By: </span>
-                <select value={sort} onChange={e => setSort(e.target.value)} className="border rounded-md px-2 py-1">
 
-                     <option value=''>Newest</option>
-                    <option value='sort=oldest'>Oldest</option>
-                    <option value='sort=-price'>Price: Hight-Low</option>
-                </select>
-             </div> 
+       {/* Radio buttons for condition */}
+       <div className="flex items-center gap-4">
+        <span className="font-medium">Condition: </span>
+        <label>
+          <input
+            type="radio"
+            value="brandNew"
+            checked={condition === 'Brand New'}
+            onChange={() => setCondition('Brand New')}
+          />
+          Brand New
+        </label>
+        <label>
+          <input
+            type="radio"
+            value="used"
+            checked={condition === 'Used'}
+            onChange={() => setCondition('Used')}
+          />
+          Used
+        </label>
+      </div>
+
+        <div className="row sort">
+            <span className="font-medium">Sort By: </span>
+          <select value={sort} onChange={e => setSort(e.target.value)} className="border rounded-md px-2 py-1">
+
+                <option value=''>Newest</option>
+              <option value='sort=oldest'>Oldest</option>
+              <option value='sort=-price'>Price: Hight-Low</option>
+          </select>
+        </div> 
+
     </div>
 
 

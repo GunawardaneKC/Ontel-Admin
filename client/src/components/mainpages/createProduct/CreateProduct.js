@@ -12,6 +12,7 @@ const initialState = {
     price: '',
     description: '',
     stock: '',
+    condition: '',
     content: '',
     colors:'',
     category: '',
@@ -333,6 +334,22 @@ function CreateProduct() {
                     </select>
                     </div>
                     <div className="mb-4">
+                    <label htmlFor="condition" className="text-white">
+                      condition:
+                    </label>
+                    <select
+                      className="bg-gray-200 rounded-lg p-2 w-full text-slate-950"
+                      name="condition"
+                      id="condition"
+                      value={product.condition}
+                      onChange={handleChangeInput}
+                    >
+                      <option value="Brand New">Brand New</option>
+                      <option value="Used">Used</option>
+                      {/* Add other stock options as needed */}
+                    </select>
+                    </div>
+                    <div className="mb-4">
                       <label htmlFor="content" className="text-white">Content:</label>
                       <textarea className='bg-gray-200 rounded-lg p-2 w-full h-32 text-slate-950' type="text" name="content" id="content" required
                       value={product.content} rows="15" onChange={handleChangeInput} />
@@ -343,42 +360,42 @@ function CreateProduct() {
                       value={product.colors} onChange={handleChangeInput} />
                     </div>
                     <div className="mb-4">
-  <label htmlFor="categories" className="text-white">
-    Category:
-  </label>
-  <select
-    className="bg-gray-200 rounded-lg p-2 w-full text-slate-950"
-    name="category"
-    value={selectedCategory}
-    onChange={handleChangeInput}
-  >
-    <option value="">Please select a category</option>
-    {categories.map((category) => (
-      <option value={category._id} key={category._id}>
-        {category.name}
-      </option>
-    ))}
-  </select>
-</div>
+                    <label htmlFor="categories" className="text-white">
+                      Category:
+                    </label>
+                    <select
+                      className="bg-gray-200 rounded-lg p-2 w-full text-slate-950"
+                      name="category"
+                      value={selectedCategory}
+                      onChange={handleChangeInput}
+                    >
+                      <option value="">Please select a category</option>
+                      {categories.map((category) => (
+                        <option value={category._id} key={category._id}>
+                          {category.name}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
 
-<div className="mb-4">
-  <label htmlFor="subcategories" className="text-white">
-    Subcategory
-  </label>
-  <select
-    className="bg-gray-200 rounded-lg p-2 w-full text-slate-950"
-    name="subcategory"
-    value={selectedSubcategory}
-    onChange={(e) => setSelectedSubcategory(e.target.value)}
-  >
-    <option value="">Please select a subcategory</option>
-    {subcategories.map((subcategory) => (
-      <option value={subcategory} key={subcategory}>
-        {subcategory}
-      </option>
-    ))}
-  </select>
-</div>
+                    <div className="mb-4">
+                      <label htmlFor="subcategories" className="text-white">
+                        Subcategory
+                      </label>
+                      <select
+                        className="bg-gray-200 rounded-lg p-2 w-full text-slate-950"
+                        name="subcategory"
+                        value={selectedSubcategory}
+                        onChange={(e) => setSelectedSubcategory(e.target.value)}
+                      >
+                        <option value="">Please select a subcategory</option>
+                        {subcategories.map((subcategory) => (
+                          <option value={subcategory} key={subcategory}>
+                            {subcategory}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
 
 
              <button type="submit" className="bg-amber-500 text-white py-2 px-4 rounded-lg hover:bg-green-600">{onEdit? "Update" : "Create"}</button>

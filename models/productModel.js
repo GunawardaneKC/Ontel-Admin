@@ -25,6 +25,10 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: ''
     },
+    condition:{
+        type: String,
+        default: ''
+    },
     content:{
         type: String,
         required: true

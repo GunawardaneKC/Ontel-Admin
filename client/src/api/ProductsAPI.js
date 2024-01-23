@@ -12,16 +12,17 @@ function ProductsAPI() {
     const [page, setPage] = useState(1)
     const [result, setResult] = useState(0)
     const [subcategory, setSubcategory] = useState('');
+    const [condition, setCondition] = useState('Brand New');
 
     useEffect(() => {
         const getProducts = async () => {
-        const res = await axios.get(`/api/products?limit=${page * 10}&&${category ? `category=${category}&` : ''}${subcategory ? `subcategory=${subcategory}&` : ''}&${sort}&title[regex]=${search}`);
+        const res = await axios.get(`/api/products?limit=${page * 10}&&${category ? `category=${category}&` : ''}${subcategory ? `subcategory=${subcategory}&` : ''}&${sort}&title[regex]=${search}&condition=${condition}`);
           console.log(res.data);
           setProducts(res.data.products);
           setResult(res.data.result);
         };
         getProducts();
-      }, [callback, category, subcategory, sort, search, page]);
+      }, [callback, category, subcategory, sort, search, page, condition]);
     
     return {
         products: [products, setProducts],
@@ -32,6 +33,7 @@ function ProductsAPI() {
         page: [page, setPage],
         result: [result, setResult],
         subcategory: [subcategory, setSubcategory],
+        condition: [condition, setCondition],
     }
 }
 
