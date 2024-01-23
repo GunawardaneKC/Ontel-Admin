@@ -196,6 +196,8 @@ function CreateProduct() {
     
       if (name === 'content') {
         setProduct({ ...product, [name]: value });
+      } else if (name === 'condition') {
+        setProduct({ ...product, [name]: value });
       } else {
         setProduct({ ...product, [name]: value });
       }
@@ -204,6 +206,7 @@ function CreateProduct() {
         // Set selected subcategory to the first option when the category changes
         setSelectedSubcategory(subcategories.length > 0 ? subcategories[0] : '');
       }
+      
     };
        
 
