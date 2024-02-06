@@ -28,7 +28,7 @@ app.use('/api', require('./routes/upload'));
 app.use('/api', require('./routes/productRouter'));
 app.use('/api', require('./routes/paymentRouter'));
 
-// Connect to MongoDB with additional options
+// Connect to MongoDB with additional option
  
 mongoose.set('strictQuery', false);
 mongoose.set('strictQuery', true);
