@@ -12,6 +12,13 @@ function ProductItem({ product, isAdmin, deleteProduct, handleCheck }) {
           onChange={() => handleCheck(product._id)}
         />
       )}
+
+        {product.discountprice && (
+          <p className="text-red-500 font-bold bg-slate-300 mt-2 text-center h-7 bg-opacity-75">
+            {product.discountprice}
+          </p>
+        )}  
+
       <img src={product.images.url} alt="" className="mx-auto w-64 h-64 object-contain" />
 
       <div className="text-center mt-6">

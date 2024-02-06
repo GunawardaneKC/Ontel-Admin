@@ -10,6 +10,7 @@ const initialState = {
     product_id: '',
     title: '',
     price: '',
+    discountprice: '',
     description: '',
     stock: '',
     condition: '',
@@ -62,52 +63,6 @@ function CreateProduct() {
         setImages(false);
       }
     }, [param.id, products, categories]);
-             
-
-  //   const handleUpload = async e => {
-  //     e.preventDefault();
-  //     try {
-  //         if (!isAdmin) return alert("You're not an admin");
-  //         const file = e.target.files[0];
-  
-  //         if (!file) return alert("File not exist.");
-  
-  //         if (file.size > 1024 * 1024) // 1mb
-  //             return alert("Size too large!");
-  
-  //         if (file.type !== 'image/jpeg' && file.type !== 'image/png') // 1mb
-  //             return alert("File format is incorrect.");
-  
-  //         const img = document.createElement("img");
-  //         const canvas = document.createElement("canvas");
-  //         const reader = new FileReader();
-  
-  //         reader.onload = function (e) {
-  //             img.onload = async function () {
-  //                 const ctx = canvas.getContext("2d");
-  //                 // Set the canvas to the desired size
-  //                 canvas.width = 800; // width
-  //                 canvas.height = 800; // height
-  //                 ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-  //                 canvas.toBlob(async function (blob) {
-  //                     let formData = new FormData();
-  //                     formData.append('file', blob, file.name);
-  
-  //                     setLoading(true);
-  //                     const res = await axios.post('/api/upload', formData, {
-  //                         headers: {'content-type': 'multipart/form-data', Authorization: token}
-  //                     });
-  //                     setLoading(false);
-  //                     setImages(res.data);
-  //                 }, file.type);
-  //             };
-  //             img.src = e.target.result;
-  //         };
-  //         reader.readAsDataURL(file);
-  //     } catch (err) {
-  //         alert(err.response.data.msg);
-  //     }
-  // };
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -208,29 +163,6 @@ function CreateProduct() {
       }
       
     };
-       
-
-    // const handleSubmit = async e =>{
-    //     e.preventDefault()
-    //     try {
-    //         if(!isAdmin) return alert("You're not an admin")
-    //         if(!images) return alert("No Image Upload")
-
-    //         if(onEdit){
-    //             await axios.put(`/api/products/${product._id}`, {...product, images, subcategory : selectedSubcategory}, {
-    //                 headers: {Authorization: token}
-    //             })
-    //         }else{
-    //             await axios.post('/api/products', {...product, images, subcategory : selectedSubcategory}, {
-    //                 headers: {Authorization: token}
-    //             })
-    //         }
-    //         setCallback(!callback)
-    //         navigate("/products")
-    //     } catch (err) {
-    //         alert(err.response.data.msg)
-    //     }
-    // }
 
     const handleSubmit = async e => {
       e.preventDefault();
@@ -314,6 +246,11 @@ function CreateProduct() {
                       <label htmlFor="price" className="text-white">Price:</label>
                       <input className='bg-gray-200 rounded-lg p-2 w-full text-slate-950' type="number" name="price" id="price" required
                       value={product.price} onChange={handleChangeInput} />
+                    </div>
+                    <div className="mb-4">
+                      <label htmlFor="discountprice" className="text-white">Discount Price:</label>
+                      <input className='bg-gray-200 rounded-lg p-2 w-full text-slate-950' type="number" name="discountprice" id="discountprice"
+                      value={product.discountprice} onChange={handleChangeInput} />
                     </div>
                     <div className="mb-4">
                       <label htmlFor="description" className="text-white">Model:</label>
