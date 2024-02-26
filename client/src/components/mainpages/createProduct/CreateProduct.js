@@ -13,7 +13,7 @@ const initialState = {
     discountprice: '',
     description: '',
     stock: '',
-    condition: '',
+    condition: 'Brand New',
     content: '',
     colors:'',
     category: '',
@@ -284,6 +284,7 @@ function CreateProduct() {
                       value={product.condition}
                       onChange={handleChangeInput}
                     >
+                      
                       <option value="Brand New">Brand New</option>
                       <option value="Used">Used</option>
                       {/* Add other stock options as needed */}
