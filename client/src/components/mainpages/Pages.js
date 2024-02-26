@@ -17,7 +17,7 @@ function Pages() {
 
     return (
         <Routes>
-            <Route path="/" exact element={<Register/>} />
+            <Route path="/" exact element={<Login/>} />
             <Route path="/products" exact element={ <Products/> } />
             {/* <Route path="/detail/:id" exact element={<DetailProduct/>} /> */}
             {/* <Route path="/ProR" exact element={<ReportPro/>} /> */}
@@ -25,7 +25,7 @@ function Pages() {
             {/* <Route path="/supportChat" exact element={<SupportChat/>} /> */}
 
              {/* <Route path="/login" exact element={isLogged ? <NotFound/> : <Login/>} /> */}
-            <Route path="/register" exact element={isLogged ? <NotFound/> : <Register/>} /> 
+            {/* <Route path="/register" exact element={isLogged ? <NotFound/> : <Register/>} />  */}
             
             {/* <Route path="/dashBoard" exact element={isAdmin ? <DashBoard/> : <NotFound/>} /> */}
 
