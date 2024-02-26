@@ -17,7 +17,7 @@ function Pages() {
 
     return (
         <Routes>
-            <Route path="/" exact element={<Login/>} />
+            <Route path="/" exact element={<Register/>} />
             <Route path="/products" exact element={ <Products/> } />
             {/* <Route path="/detail/:id" exact element={<DetailProduct/>} /> */}
             {/* <Route path="/ProR" exact element={<ReportPro/>} /> */}
